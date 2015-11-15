@@ -2,7 +2,7 @@
 Pour créer le service :
 - s'assurer qu'axis2 est bien déployé dans un tomcat
 - dans le fichier build.xml, modifier la propriété suivante :
-  <property name="tomcat.dir" value="C:/apache-tomcat-8.0.28/webapps/axis2/WEB-INF/services"/>
+  < property name="tomcat.dir" value="C:/apache-tomcat-8.0.28/webapps/axis2/WEB-INF/services" / >
   pour lui donner le bon chemin relatif
 - ouvrir ant (dans Intellij, sur le coté droit, menu ant build)
 - si aucune tache n'apparait, faire "+" et lui donner le fichier build.xml
