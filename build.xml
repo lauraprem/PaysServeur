@@ -1,0 +1,46 @@
+<project name="ForAnt" basedir="" default="generate.service">
+    <property environment="env"/>
+    <property name="build.dir" value="build"/>
+    <property name="tomcat.dir" value="C:/apache-tomcat-8.0.28/webapps/axis2/WEB-INF/services"/>
+    <path id="axis2.classpath">
+        <fileset dir="${basedir}/lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+    <target name="compile.service">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${build.dir}/classes"/>
+        <mkdir dir="${build.dir}/resources"/>
+        <javac debug="on"
+               fork="true"
+               destdir="${build.dir}/classes"
+               srcdir="${basedir}/src"
+               classpathref="axis2.classpath">
+        </javac>
+    </target>
+    <target name="generate.service" depends="compile.service">
+        <copy toDir="${build.dir}/classes" failonerror="false">
+            <fileset dir="${basedir}/resources">
+                <include name="**/*.xml"/>
+            </fileset>
+            <fileset dir="${basedir}/src/ws/">
+                <include name="**/*.wsdl"/>
+            </fileset>
+            <fileset dir="${basedir}/src/">
+                <include name="*.xml"/>
+            </fileset>
+        </copy>
+        <copy toDir="${build.dir}/classes/lib" failonerror="false">
+            <fileset dir="${basedir}/lib">
+                <include name="*.jar"/>
+            </fileset>
+        </copy>
+        <jar destfile="${tomcat.dir}/Pays.aar">
+            <fileset excludes="**/Test.class" dir="${build.dir}/classes"/>
+        </jar>
+    </target>
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete file="${tomcat.dir}/Pays.aar"/>
+    </target>
+</project>
