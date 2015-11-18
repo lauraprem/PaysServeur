@@ -7,9 +7,7 @@ import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-/**
- * Created by Pierre on 08/09/2015.
- */
+
 @Entity
 public class Pays {
     private String nomPays;
