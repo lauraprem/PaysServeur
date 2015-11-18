@@ -44,25 +44,5 @@ public class Pays {
         this.nbHabitants = nbHabitants;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        Pays pays = (Pays) o;
-
-        if (nbHabitants != pays.nbHabitants) return false;
-        if (nomPays != null ? !nomPays.equals(pays.nomPays) : pays.nomPays != null) return false;
-        if (nomCapitale != null ? !nomCapitale.equals(pays.nomCapitale) : pays.nomCapitale != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = nomPays != null ? nomPays.hashCode() : 0;
-        result = 31 * result + (nomCapitale != null ? nomCapitale.hashCode() : 0);
-        result = 31 * result + (int) (nbHabitants ^ (nbHabitants >>> 32));
-        return result;
-    }
 }
